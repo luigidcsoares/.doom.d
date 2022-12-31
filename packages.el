@@ -53,6 +53,4 @@
 (package! org-inline-pdf)
 (package! visual-fill-column)
 (package! pandoc-mode)
-(package! boogie-friends :recipe
-  (:local-repo "/home/luigi/workspace/boogie-friends/"
-   :build (:not compile)))
+(package! boogie-friends)

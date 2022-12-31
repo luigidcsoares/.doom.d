@@ -284,9 +284,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (after! boogie-friends
+  ;; Choose dafny version:
+  (setq lsp-dafny-preferred-version "3.9.1")
+
   (setq flycheck-dafny-executable "/usr/bin/dafny")
   (map! :map dafny-mode-map :localleader
-        "c" #'lsp-dafny-counterexamples-mode)
+        "e" #'lsp-dafny-counterexamples-mode)
+
+  ;; Increase dafny verification timeout:
+  (setq lsp-dafny-server-verification-time-limit 60)
+
+  ;; Add hook to enable LSP automatically for dafny
+  (add-hook 'dafny-mode-hook #'lsp)
 
   ;; Add hook to force counterexamples update after flycheck
   ;; (this should probably be in lsp-dafny; maybe a PR?)
